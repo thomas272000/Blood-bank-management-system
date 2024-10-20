@@ -50,16 +50,11 @@ class BloodInventoryModel(models.Model):
 
 #BloodRequestModel
 class BloodRequestModel(models.Model):
-    STATUS_CHOICES = [
-        ('Pending', 'Pending'),
-        ('Fulfilled', 'Fulfilled'),
-        ('Rejected', 'Rejected'),
-    ]
-
-    user = models.ForeignKey(User, on_delete=models.CASCADE)  # The user making the request
+   
+    user = models.ForeignKey(User, on_delete=models.CASCADE)  
     blood_type = models.CharField(max_length=3, choices=BloodInventoryModel.BLOOD_TYPES)
     units_requested = models.PositiveIntegerField()
-    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='Pending')
+    status = models.CharField(max_length=10, default='Pending')
     request_date = models.DateField(auto_now_add=True)
 
     def __str__(self):

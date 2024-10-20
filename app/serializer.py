@@ -47,6 +47,6 @@ class BloodInventorySerializer(serializers.ModelSerializer):
 
 
 class BloodRequestSerializer(serializers.ModelSerializer):
-    class meta:
+    class Meta:
         model= BloodRequestModel
         fields = "__all__"

@@ -22,7 +22,7 @@ class UserRegistrationView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-       
+#ForDonor
 class DonorAdminAPIView(APIView):
     permission_classes = [IsAuthenticated, IsAdminUser]
 
@@ -40,7 +40,7 @@ class DonorAdminAPIView(APIView):
             serializer = DonorSerializer(donors, many=True)
             return Response(serializer.data, status=status.HTTP_200_OK)
 
-    # Add a new donor (POST)
+    
     def post(self, request):
         serializer = DonorSerializer(data=request.data)
         if serializer.is_valid():
@@ -48,20 +48,20 @@ class DonorAdminAPIView(APIView):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    # Update a donor by ID (PUT)
+    
     def put(self, request, id):
         try:
             donor = DonorModel.objects.get(id=id)
         except DonorModel.DoesNotExist:
             return Response({"detail": "Donor not found"}, status=status.HTTP_404_NOT_FOUND)
         
-        serializer = DonorSerializer(instance=donor, data=request.data, partial=True)  # partial=True allows partial updates
+        serializer = DonorSerializer(instance=donor, data=request.data, partial=True)  
         if serializer.is_valid():
             serializer.save()
             return Response({"detail": "Donor updated successfully"}, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    # Delete a donor by ID (DELETE)
+    
     def delete(self, request, id):
         try:
             donor = DonorModel.objects.get(id=id)
@@ -112,7 +112,7 @@ class BloodInventoryAdminAPIView(APIView):
 
 
 
-
+#ForBloodRequest
 class BloodRequestAPIView(APIView):
     permission_classes=[IsAuthenticated]
 

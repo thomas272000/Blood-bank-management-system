@@ -27,7 +27,7 @@ from rest_framework_simplejwt.views import (
 
 
 urlpatterns = [
-        # path('admin/', admin.site.urls),  # Admin URL
+    path('admin1/', admin.site.urls),  # Admin URL
 
     
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
@@ -37,8 +37,8 @@ urlpatterns = [
     path('admin/donors/', DonorAdminAPIView.as_view(), name='all-donors'),
     path('admin/request/<int:id>/', BloodRequestAdminAPIView.as_view(), name='blood-request-admin'),
     path('admin/donors/<int:id>/', DonorAdminAPIView.as_view(), name='single-donor'), 
-    path('admin/inventory/<int:id>', BloodInventoryAPIView.as_view(), name='inventory-id'),  
-    path('admin/inventory', BloodInventoryAPIView.as_view(), name='inventory')  ,
+    path('admin/inventory/<int:id>', BloodInventoryAdminAPIView.as_view(), name='inventory-id'),  
+    path('admin/inventory', BloodInventoryAdminAPIView.as_view(), name='inventory')  ,
 
     path('allinventory', BloodInventoryAPIView.as_view(), name='all-inventory'),  
     path('request/<int:id>', BloodRequestAPIView.as_view(), name='delete-request'),  
